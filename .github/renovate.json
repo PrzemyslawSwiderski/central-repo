@@ -9,8 +9,6 @@
     "mergeConfidence:age-confidence-badges",
     "replacements:all",
     "workarounds:all",
-    ":automergeAll",
-    ":automergeRequireAllStatusChecks"
-  ],
-  "ignoreTests": true
+    ":automergeAll"
+  ]
 }
