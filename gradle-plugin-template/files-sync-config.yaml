@@ -3,7 +3,7 @@ settings:
     labels:
       - "files-sync"
     merge:
-      mode: auto
+      mode: immediate
       strategy: merge
       delete_branch: true
 
@@ -19,7 +19,9 @@ patterns:
 
     delete_files:
       - .github/workflows/gradle-build.yml
+      - .github/workflows/dependabot-auto-merge.yml
       - .github/workflows/auto-merge.yml
+      - .github/dependabot.yml
 
     repositories:
       - PrzemyslawSwiderski/python-uv-gradle-plugin
