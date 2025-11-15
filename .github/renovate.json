@@ -10,5 +10,9 @@
     "replacements:all",
     "workarounds:all",
     ":automergeAll"
-  ]
+  ],
+  "automerge": true,
+  "automergeStrategy": "auto",
+  "automergeType": "pr",
+  "ignoreTests": true
 }
