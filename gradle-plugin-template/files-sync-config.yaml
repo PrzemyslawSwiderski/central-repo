@@ -1,7 +1,11 @@
 settings:
   pull_request:
     labels:
-      - 'files-sync'
+      - "files-sync"
+    merge:
+      mode: auto
+      strategy: merge
+      delete_branch: true
 
 patterns:
   - files:
@@ -9,13 +13,13 @@ patterns:
         to: ./
         exclude:
           - files-sync-config.yaml
-      
+
       - from: gradle-plugin-template/.github
         to: .github
 
-    # delete_files:
-    #   - a-file-to-delete.md
-    #   - path: a/folder/to/delete
-    #     type: directory
+    delete_files:
+      - .github/workflows/gradle-build.yml
+      - .github/workflows/auto-merge.yml
+
     repositories:
       - PrzemyslawSwiderski/python-uv-gradle-plugin
