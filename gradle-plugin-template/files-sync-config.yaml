@@ -10,6 +10,9 @@ patterns:
         exclude:
           - files-sync-config.yaml
       
+      - from: gradle-plugin-template/.github
+        to: .github
+
     # delete_files:
     #   - a-file-to-delete.md
     #   - path: a/folder/to/delete
