@@ -4,7 +4,7 @@ settings:
       - "files-sync"
     merge:
       mode: immediate
-      strategy: merge
+      strategy: squash
       delete_branch: true
 
 patterns:
