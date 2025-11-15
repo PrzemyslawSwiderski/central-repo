@@ -14,5 +14,9 @@
   "automerge": true,
   "automergeStrategy": "auto",
   "automergeType": "pr",
-  "ignoreTests": true
+  "ignoreTests": true,
+  "github-actions": {
+    "ignoreTests": true,
+    "automerge": true
+  }
 }
