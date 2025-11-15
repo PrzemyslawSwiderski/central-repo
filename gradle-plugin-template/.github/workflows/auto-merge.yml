@@ -15,20 +15,18 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          PR_NUMBER=$(gh pr list --repo ${{ github.repository }} --head ${{ github.event.check_suite.head_branch }} --json number --jq '.[0].number')
+          PR_NUMBER=$(gh pr list --head ${{ github.event.check_suite.head_branch }} --json number --jq '.[0].number')
 
           if [ -z "$PR_NUMBER" ]; then
             echo "No PR found for this branch"
             exit 0
           fi
 
-          LABELS=$(gh pr view $PR_NUMBER --repo ${{ github.repository }} --json labels --jq '.labels[].name')
-          AUTHOR=$(gh pr view $PR_NUMBER --repo ${{ github.repository }} --json author --jq '.author.login')
+          LABELS=$(gh pr view $PR_NUMBER --json labels --jq '.labels[].name')
+          AUTHOR=$(gh pr view $PR_NUMBER --json author --jq '.author.login')
 
           if [[ "$LABELS" == *"files-sync"* ]] && [[ "$AUTHOR" == "${{ github.repository_owner }}" ]]; then
-            # Check all checks have passed
-            gh pr checks $PR_NUMBER --repo ${{ github.repository }}
-            
+            gh pr checks $PR_NUMBER
             echo "All checks passed, merging PR..."
-            gh pr merge $PR_NUMBER --repo ${{ github.repository }} --squash --delete-branch
+            gh pr merge $PR_NUMBER --squash --delete-branch
           fi
