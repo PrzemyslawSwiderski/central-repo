@@ -1,8 +1,6 @@
 name: 🤖 Auto Merge Sync PRs
 
 on:
-  pull_request:
-    types: [labeled, synchronize]
   check_suite:
     types: [completed]
 
@@ -10,11 +8,27 @@ jobs:
   auto-merge:
     runs-on: ubuntu-latest
     if: |
-      contains(github.event.pull_request.labels.*.name, 'files-sync') &&
-      github.event.pull_request.user.login == github.repository_owner
+      github.event.check_suite.conclusion == 'success' &&
+      github.event.check_suite.head_branch != 'main'
     steps:
-      - name: Enable auto-merge
+      - name: Check if PR has label and merge
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr merge ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --auto --squash
+          PR_NUMBER=$(gh pr list --repo ${{ github.repository }} --head ${{ github.event.check_suite.head_branch }} --json number --jq '.[0].number')
+
+          if [ -z "$PR_NUMBER" ]; then
+            echo "No PR found for this branch"
+            exit 0
+          fi
+
+          LABELS=$(gh pr view $PR_NUMBER --repo ${{ github.repository }} --json labels --jq '.labels[].name')
+          AUTHOR=$(gh pr view $PR_NUMBER --repo ${{ github.repository }} --json author --jq '.author.login')
+
+          if [[ "$LABELS" == *"files-sync"* ]] && [[ "$AUTHOR" == "${{ github.repository_owner }}" ]]; then
+            # Check all checks have passed
+            gh pr checks $PR_NUMBER --repo ${{ github.repository }}
+            
+            echo "All checks passed, merging PR..."
+            gh pr merge $PR_NUMBER --repo ${{ github.repository }} --squash --delete-branch
+          fi
