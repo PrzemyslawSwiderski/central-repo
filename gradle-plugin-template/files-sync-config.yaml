@@ -1,7 +1,5 @@
 settings:
   pull_request:
-    reviewers:
-      - 'PrzemyslawSwiderski'
     labels:
       - 'files-sync'
 
@@ -10,7 +8,7 @@ patterns:
       - from: gradle-plugin-template
         to: ./
         exclude:
-          - gradle-plugin-template/files-sync-config.yaml
+          - files-sync-config.yaml
       
     # delete_files:
     #   - a-file-to-delete.md
