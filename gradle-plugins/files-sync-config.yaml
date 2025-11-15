@@ -9,12 +9,12 @@ settings:
 
 patterns:
   - files:
-      - from: gradle-plugin-template
+      - from: gradle-plugins
         to: ./
         exclude:
           - files-sync-config.yaml
 
-      - from: gradle-plugin-template/.github
+      - from: gradle-plugins/.github
         to: .github
 
     delete_files:

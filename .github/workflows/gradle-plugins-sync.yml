@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - id: sync
+      - id: sync-gradle-plugins
         uses: wadackel/files-sync-action@v3
         with:
           github_token: ${{ secrets.GH_FILES_SYNC_TOKEN }}
-          config_file: gradle-plugin-template/files-sync-config.yaml
+          config_file: gradle-plugins/files-sync-config.yaml
       - name: Log sync outputs
         run: |
-          echo "Pull Request URLs: ${{ steps.sync.outputs.pull_request_urls }}"
-          echo "Synced Files: ${{ steps.sync.outputs.synced_files }}"
+          echo "Pull Request URLs: ${{ steps.sync-gradle-plugins.outputs.pull_request_urls }}"
+          echo "Synced Files: ${{ steps.sync-gradle-plugins.outputs.synced_files }}"
