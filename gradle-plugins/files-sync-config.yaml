@@ -26,3 +26,4 @@ patterns:
     repositories:
       - PrzemyslawSwiderski/python-uv-gradle-plugin
       - PrzemyslawSwiderski/terraform-gradle-plugin
+      - PrzemyslawSwiderski/helm-gradle-plugin
