@@ -22,6 +22,7 @@ patterns:
       - .github/workflows/dependabot-auto-merge.yml
       - .github/workflows/auto-merge.yml
       - .github/dependabot.yml
+      - .github/workflows/post-release-updates.yml
 
     repositories:
       - PrzemyslawSwiderski/python-gradle-plugin
