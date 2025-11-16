@@ -28,3 +28,4 @@ patterns:
       - PrzemyslawSwiderski/python-uv-gradle-plugin
       - PrzemyslawSwiderski/terraform-gradle-plugin
       - PrzemyslawSwiderski/helm-gradle-plugin
+      - PrzemyslawSwiderski/yaml-secrets-gradle-plugin
