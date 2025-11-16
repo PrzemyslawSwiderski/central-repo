@@ -24,6 +24,7 @@ patterns:
       - .github/dependabot.yml
 
     repositories:
+      - PrzemyslawSwiderski/python-gradle-plugin
       - PrzemyslawSwiderski/python-uv-gradle-plugin
       - PrzemyslawSwiderski/terraform-gradle-plugin
       - PrzemyslawSwiderski/helm-gradle-plugin
