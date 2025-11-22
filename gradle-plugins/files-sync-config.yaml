@@ -9,6 +9,9 @@ settings:
 
 patterns:
   - files:
+      - from: commons/.github
+        to: .github
+
       - from: gradle-plugins
         to: ./
         exclude:

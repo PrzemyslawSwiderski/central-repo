@@ -1,5 +1,7 @@
 name: Sync Gradle Plugins Files
 on:
+  schedule:
+    - cron: "0 12 * * *" # Every day at 12 PM UTC
   push:
     branches:
       - main
@@ -9,12 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+
       - id: sync-gradle-plugins
         uses: wadackel/files-sync-action@v3
         with:
           github_token: ${{ secrets.GH_FILES_SYNC_TOKEN }}
           config_file: gradle-plugins/files-sync-config.yaml
-      - name: Log sync outputs
-        run: |
-          echo "Pull Request URLs: ${{ steps.sync-gradle-plugins.outputs.pull_request_urls }}"
-          echo "Synced Files: ${{ steps.sync-gradle-plugins.outputs.synced_files }}"
+
+      - id: sync-renovate-projects
+        uses: wadackel/files-sync-action@v3
+        with:
+          github_token: ${{ secrets.GH_FILES_SYNC_TOKEN }}
+          config_file: renovate-projects/files-sync-config.yaml

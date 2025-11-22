@@ -1,0 +1,29 @@
+settings:
+  pull_request:
+    labels:
+      - "files-sync"
+    merge:
+      mode: immediate
+      strategy: squash
+      delete_branch: true
+
+patterns:
+  - files:
+      - from: commons/.github
+        to: .github
+
+      - from: renovate-projects
+        to: ./
+        exclude:
+          - files-sync-config.yaml
+
+      - from: renovate-projects/.github
+        to: .github
+
+    delete_files:
+      - .github/workflows/dependabot-auto-merge.yml
+      - .github/dependabot.yml
+
+    repositories:
+      - PrzemyslawSwiderski/printamos
+      - PrzemyslawSwiderski/PrzemyslawSwiderski.github.io

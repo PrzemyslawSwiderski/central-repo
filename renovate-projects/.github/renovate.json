@@ -11,11 +11,5 @@
     "workarounds:all",
     ":automergeAll",
     ":automergeRequireAllStatusChecks"
-  ],
-  "github-actions": {
-    "enabled": false
-  },
-  "ignorePaths": [
-    "examples/**"
   ]
 }
