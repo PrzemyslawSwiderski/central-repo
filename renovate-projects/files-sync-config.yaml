@@ -3,7 +3,7 @@ settings:
     labels:
       - "files-sync"
     merge:
-      mode: immediate
+      mode: auto
       strategy: squash
       delete_branch: true
 
@@ -19,10 +19,6 @@ patterns:
 
       - from: renovate-projects/.github
         to: .github
-
-    delete_files:
-      - .github/workflows/dependabot-auto-merge.yml
-      - .github/dependabot.yml
 
     repositories:
       - PrzemyslawSwiderski/printamos
