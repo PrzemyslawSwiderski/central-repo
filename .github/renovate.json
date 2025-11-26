@@ -12,5 +12,7 @@
     ":automergeAll"
   ],
   "automerge": true,
-  "ignoreTests": true
+  "ignoreTests": true,
+  "minimumReleaseAge": "2 days",
+  "prCreation": "not-pending"
 }
