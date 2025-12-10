@@ -20,6 +20,9 @@ patterns:
       - from: gradle-plugins/.github
         to: .github
 
+    delete_files:
+      - .github/draft-release.yml
+
     repositories:
       - PrzemyslawSwiderski/python-gradle-plugin
       - PrzemyslawSwiderski/python-uv-gradle-plugin

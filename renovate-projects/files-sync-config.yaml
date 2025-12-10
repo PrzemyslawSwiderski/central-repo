@@ -19,7 +19,10 @@ patterns:
 
       - from: renovate-projects/.github
         to: .github
-
+    
+    delete_files:
+      - .github/draft-release.yml
+    
     repositories:
       - PrzemyslawSwiderski/printamos
       - PrzemyslawSwiderski/PrzemyslawSwiderski.github.io
