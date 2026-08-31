@@ -13,13 +13,13 @@ jobs:
       - uses: actions/checkout@v7
 
       - id: sync-gradle-plugins
-        uses: wadackel/files-sync-action@v3
+        uses: wadackel/files-sync-action@v4
         with:
           github_token: ${{ secrets.GH_FILES_SYNC_TOKEN }}
           config_file: gradle-plugins/files-sync-config.yaml
 
       - id: sync-renovate-projects
-        uses: wadackel/files-sync-action@v3
+        uses: wadackel/files-sync-action@v4
         with:
           github_token: ${{ secrets.GH_FILES_SYNC_TOKEN }}
           config_file: renovate-projects/files-sync-config.yaml
